@@ -3,11 +3,35 @@ import type { StoryObj, Meta } from '@storybook/react'
 import { ButtonProps, Button } from '@ignite-ui/react'
 
 export default {
-  title: 'Data Display/Button',
+  title: 'Form/Button',
   component: Button,
 
   args: {
     children: 'Send',
+    variant: 'primary',
+    size: 'md',
+  },
+  argTypes: {
+    variant: {
+      options: ['primary', 'secundary', 'tertiary'],
+      control: {
+        type: 'inline-radio',
+      },
+    },
+    size: {
+      options: ['sm', 'md'],
+      control: {
+        type: 'inline-radio',
+      },
+    },
+    disabled: {
+      control: {
+        type: 'boolean',
+      },
+    },
+    onClick: {
+      action: 'click',
+    },
   },
 } as Meta<ButtonProps>
 
