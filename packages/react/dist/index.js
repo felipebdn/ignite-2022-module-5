@@ -68,6 +68,7 @@ __export(src_exports, {
   Text: () => Text,
   TextArea: () => TextArea,
   TextInput: () => TextInput,
+  Toast: () => Toast2,
   config: () => config,
   createTheme: () => createTheme,
   css: () => css,
@@ -559,6 +560,37 @@ function MultiStep({ size, currentStep = 1 }) {
   ] }) });
 }
 MultiStep.displayName = "MultiStep";
+
+// src/components/Toast/index.tsx
+var IToast = __toESM(require("@radix-ui/react-toast"));
+var import_phosphor_react3 = require("phosphor-react");
+
+// src/components/Toast/styles.ts
+var Toast = __toESM(require("@radix-ui/react-toast"));
+var Root4 = styled(Toast.Root, {
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "space-between",
+  padding: "1.25rem"
+});
+var Title2 = styled(Toast.Title, {});
+var Description2 = styled(Toast.Description, {});
+
+// src/components/Toast/index.tsx
+var import_jsx_runtime5 = require("react/jsx-runtime");
+function Toast2(_a) {
+  var _b = _a, { date, title } = _b, props = __objRest(_b, ["date", "title"]);
+  return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(IToast.Provider, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Button, { size: "sm", children: "Clique" }),
+    /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(Root4, __spreadProps(__spreadValues({}, props), { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Title2, { children: title }),
+        /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Description2, { children: date })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(IToast.Action, { altText: "Goto schedule to undo", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(import_phosphor_react3.X, { weight: "bold" }) })
+    ] }))
+  ] });
+}
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Avatar,
@@ -570,6 +602,7 @@ MultiStep.displayName = "MultiStep";
   Text,
   TextArea,
   TextInput,
+  Toast,
   config,
   createTheme,
   css,

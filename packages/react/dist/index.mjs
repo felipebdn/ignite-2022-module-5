@@ -510,6 +510,37 @@ function MultiStep({ size, currentStep = 1 }) {
   ] }) });
 }
 MultiStep.displayName = "MultiStep";
+
+// src/components/Toast/index.tsx
+import * as IToast from "@radix-ui/react-toast";
+import { X } from "phosphor-react";
+
+// src/components/Toast/styles.ts
+import * as Toast from "@radix-ui/react-toast";
+var Root4 = styled(Toast.Root, {
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "space-between",
+  padding: "1.25rem"
+});
+var Title2 = styled(Toast.Title, {});
+var Description2 = styled(Toast.Description, {});
+
+// src/components/Toast/index.tsx
+import { jsx as jsx5, jsxs as jsxs4 } from "react/jsx-runtime";
+function Toast2(_a) {
+  var _b = _a, { date, title } = _b, props = __objRest(_b, ["date", "title"]);
+  return /* @__PURE__ */ jsxs4(IToast.Provider, { children: [
+    /* @__PURE__ */ jsx5(Button, { size: "sm", children: "Clique" }),
+    /* @__PURE__ */ jsxs4(Root4, __spreadProps(__spreadValues({}, props), { children: [
+      /* @__PURE__ */ jsxs4("div", { children: [
+        /* @__PURE__ */ jsx5(Title2, { children: title }),
+        /* @__PURE__ */ jsx5(Description2, { children: date })
+      ] }),
+      /* @__PURE__ */ jsx5(IToast.Action, { altText: "Goto schedule to undo", children: /* @__PURE__ */ jsx5(X, { weight: "bold" }) })
+    ] }))
+  ] });
+}
 export {
   Avatar2 as Avatar,
   Box,
@@ -520,6 +551,7 @@ export {
   Text,
   TextArea,
   TextInput,
+  Toast2 as Toast,
   config,
   createTheme,
   css,
