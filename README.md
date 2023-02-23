@@ -1,5 +1,5 @@
 # Components
-olá
+
 - [ ] Button
 - [ ] Heading
 - [ ] Text
