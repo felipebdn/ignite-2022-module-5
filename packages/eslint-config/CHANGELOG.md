@@ -1,5 +1,17 @@
 # @felipebdn-ignite-ui/eslint-config
 
+## 6.0.0
+
+### Major Changes
+
+- agora vai eu acho
+
+## 5.0.0
+
+### Major Changes
+
+- tste queria que fosse o final
+
 ## 4.0.0
 
 ### Major Changes

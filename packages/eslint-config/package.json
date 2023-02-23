@@ -1,6 +1,6 @@
 {
   "name": "@felipebdn-ignite-ui/eslint-config",
-  "version": "4.0.0",
+  "version": "6.0.0",
   "license": "MIT",
   "private": true,
   "main": "index.js",
