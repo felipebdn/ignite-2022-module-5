@@ -1,7 +1,5 @@
 # Components
 
-  oi
-
 - [ ] Button
 - [ ] Heading
 - [ ] Text

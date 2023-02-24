@@ -564,6 +564,7 @@ MultiStep.displayName = "MultiStep";
 // src/components/Toast/index.tsx
 var IToast = __toESM(require("@radix-ui/react-toast"));
 var import_phosphor_react3 = require("phosphor-react");
+var import_react3 = require("react");
 
 // src/components/Toast/styles.ts
 var Toast = __toESM(require("@radix-ui/react-toast"));
@@ -571,24 +572,81 @@ var Root4 = styled(Toast.Root, {
   display: "flex",
   flexDirection: "row",
   justifyContent: "space-between",
-  padding: "1.25rem"
+  alignItems: "flex-start",
+  padding: "1.25rem",
+  background: "$gray800",
+  border: "1px solid $gray600",
+  gap: "2rem",
+  div: {
+    width: "100%",
+    flex: 1
+  }
 });
-var Title2 = styled(Toast.Title, {});
-var Description2 = styled(Toast.Description, {});
+var Title2 = styled(Toast.Title, {
+  lineHeight: "$base",
+  fontWeight: "$bold",
+  fontSize: "$xl",
+  color: "$white"
+});
+var Description2 = styled(Toast.Description, {
+  lineHeight: "$base",
+  fontWeight: "$regular",
+  fontSize: "$sm",
+  color: "$gray200"
+});
+var Viewport2 = styled(Toast.Viewport, {
+  position: "fixed",
+  bottom: 0,
+  right: 0,
+  display: "flex",
+  flexDirection: "column",
+  padding: "25px",
+  gap: "10px",
+  margin: 0,
+  zIndex: 2147483647,
+  outline: "none"
+});
+var Close2 = styled(Toast.Close, {
+  background: "none",
+  border: "none",
+  padding: 0,
+  cursor: "pointer",
+  svg: {
+    color: "$gray200"
+  }
+});
 
 // src/components/Toast/index.tsx
 var import_jsx_runtime5 = require("react/jsx-runtime");
 function Toast2(_a) {
   var _b = _a, { date, title } = _b, props = __objRest(_b, ["date", "title"]);
-  return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(IToast.Provider, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Button, { size: "sm", children: "Clique" }),
-    /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(Root4, __spreadProps(__spreadValues({}, props), { children: [
+  const [open, setOpen] = (0, import_react3.useState)(false);
+  return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(IToast.Provider, { swipeDirection: "right", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+      Button,
+      {
+        size: "sm",
+        onClick: () => {
+          if (open) {
+            setOpen(false);
+            setTimeout(() => {
+              setOpen(true);
+            }, 4e3);
+          } else {
+            setOpen(true);
+          }
+        },
+        children: "Clique"
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(Root4, __spreadProps(__spreadValues({}, props), { open, onOpenChange: setOpen, children: [
       /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
         /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Title2, { children: title }),
         /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Description2, { children: date })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(IToast.Action, { altText: "Goto schedule to undo", children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(import_phosphor_react3.X, { weight: "bold" }) })
-    ] }))
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Close2, { children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(import_phosphor_react3.X, { weight: "bold", size: 20 }) })
+    ] })),
+    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(Viewport2, {})
   ] });
 }
 // Annotate the CommonJS export names for ESM import in node:

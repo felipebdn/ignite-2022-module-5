@@ -514,6 +514,7 @@ MultiStep.displayName = "MultiStep";
 // src/components/Toast/index.tsx
 import * as IToast from "@radix-ui/react-toast";
 import { X } from "phosphor-react";
+import { useState } from "react";
 
 // src/components/Toast/styles.ts
 import * as Toast from "@radix-ui/react-toast";
@@ -521,24 +522,81 @@ var Root4 = styled(Toast.Root, {
   display: "flex",
   flexDirection: "row",
   justifyContent: "space-between",
-  padding: "1.25rem"
+  alignItems: "flex-start",
+  padding: "1.25rem",
+  background: "$gray800",
+  border: "1px solid $gray600",
+  gap: "2rem",
+  div: {
+    width: "100%",
+    flex: 1
+  }
 });
-var Title2 = styled(Toast.Title, {});
-var Description2 = styled(Toast.Description, {});
+var Title2 = styled(Toast.Title, {
+  lineHeight: "$base",
+  fontWeight: "$bold",
+  fontSize: "$xl",
+  color: "$white"
+});
+var Description2 = styled(Toast.Description, {
+  lineHeight: "$base",
+  fontWeight: "$regular",
+  fontSize: "$sm",
+  color: "$gray200"
+});
+var Viewport2 = styled(Toast.Viewport, {
+  position: "fixed",
+  bottom: 0,
+  right: 0,
+  display: "flex",
+  flexDirection: "column",
+  padding: "25px",
+  gap: "10px",
+  margin: 0,
+  zIndex: 2147483647,
+  outline: "none"
+});
+var Close2 = styled(Toast.Close, {
+  background: "none",
+  border: "none",
+  padding: 0,
+  cursor: "pointer",
+  svg: {
+    color: "$gray200"
+  }
+});
 
 // src/components/Toast/index.tsx
 import { jsx as jsx5, jsxs as jsxs4 } from "react/jsx-runtime";
 function Toast2(_a) {
   var _b = _a, { date, title } = _b, props = __objRest(_b, ["date", "title"]);
-  return /* @__PURE__ */ jsxs4(IToast.Provider, { children: [
-    /* @__PURE__ */ jsx5(Button, { size: "sm", children: "Clique" }),
-    /* @__PURE__ */ jsxs4(Root4, __spreadProps(__spreadValues({}, props), { children: [
+  const [open, setOpen] = useState(false);
+  return /* @__PURE__ */ jsxs4(IToast.Provider, { swipeDirection: "right", children: [
+    /* @__PURE__ */ jsx5(
+      Button,
+      {
+        size: "sm",
+        onClick: () => {
+          if (open) {
+            setOpen(false);
+            setTimeout(() => {
+              setOpen(true);
+            }, 4e3);
+          } else {
+            setOpen(true);
+          }
+        },
+        children: "Clique"
+      }
+    ),
+    /* @__PURE__ */ jsxs4(Root4, __spreadProps(__spreadValues({}, props), { open, onOpenChange: setOpen, children: [
       /* @__PURE__ */ jsxs4("div", { children: [
         /* @__PURE__ */ jsx5(Title2, { children: title }),
         /* @__PURE__ */ jsx5(Description2, { children: date })
       ] }),
-      /* @__PURE__ */ jsx5(IToast.Action, { altText: "Goto schedule to undo", children: /* @__PURE__ */ jsx5(X, { weight: "bold" }) })
-    ] }))
+      /* @__PURE__ */ jsx5(Close2, { children: /* @__PURE__ */ jsx5(X, { weight: "bold", size: 20 }) })
+    ] })),
+    /* @__PURE__ */ jsx5(Viewport2, {})
   ] });
 }
 export {
