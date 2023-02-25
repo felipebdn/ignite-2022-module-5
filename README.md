@@ -1,5 +1,4 @@
 # Components
-  final day
 
 - [ ] Button
 - [ ] Heading
