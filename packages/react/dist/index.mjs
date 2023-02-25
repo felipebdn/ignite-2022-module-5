@@ -527,6 +527,7 @@ var Root4 = styled(Toast.Root, {
   background: "$gray800",
   border: "1px solid $gray600",
   gap: "2rem",
+  borderRadius: "sm",
   div: {
     width: "100%",
     flex: 1
@@ -599,6 +600,100 @@ function Toast2(_a) {
     /* @__PURE__ */ jsx5(Viewport2, {})
   ] });
 }
+
+// src/components/Tooltip/index.tsx
+import * as ITooltip from "@radix-ui/react-tooltip";
+
+// src/components/Tooltip/styles.ts
+import * as Tooltip from "@radix-ui/react-tooltip";
+var Trigger2 = styled(Tooltip.Trigger, {
+  display: "flex",
+  lineHeight: 0,
+  padding: "$1 $3",
+  borderRadius: "$lg",
+  background: "$gray800",
+  color: "$white",
+  border: 0
+});
+var slideUpAndFade = keyframes({
+  from: {
+    opacity: 0,
+    transform: "translateY(2px)"
+  },
+  to: {
+    opacity: 1,
+    transform: "translateY(0)"
+  }
+});
+var slideRightAndFade = keyframes({
+  from: {
+    opacity: 0,
+    transform: "translateX(-2px)"
+  },
+  to: {
+    opacity: 1,
+    transform: "translateY(0)"
+  }
+});
+var slideDownAndFade = keyframes({
+  from: {
+    opacity: 0,
+    transform: "translateY(-2px)"
+  },
+  to: {
+    opacity: 1,
+    transform: "translateY(0)"
+  }
+});
+var slideLeftAndFade = keyframes({
+  from: {
+    opacity: 0,
+    transform: "translateX(2px)"
+  },
+  to: {
+    opacity: 1,
+    transform: "translateY(0)"
+  }
+});
+var Content2 = styled(Tooltip.Content, {
+  padding: "$3 $4",
+  background: "$gray900",
+  color: "$gray100",
+  borderRadius: "$sm",
+  fontWeight: "$medium",
+  fontSize: "$sm",
+  lineHeight: "$short",
+  willChange: "transform, opacity",
+  animationTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
+  '&[data-state="delayed-open"][data-side="top"]': {
+    animationName: slideDownAndFade
+  },
+  '&[data-state="delayed-open"][data-side="right"]': {
+    animationName: slideLeftAndFade
+  },
+  '&[data-state="delayed-open"][data-side="bottom"]': {
+    animationName: slideUpAndFade
+  },
+  '&[data-state="delayed-open"][data-side="left"]': {
+    animationName: slideRightAndFade
+  }
+});
+var Arrow2 = styled(Tooltip.Arrow, {
+  fill: "$gray900"
+});
+
+// src/components/Tooltip/index.tsx
+import { jsx as jsx6, jsxs as jsxs5 } from "react/jsx-runtime";
+function Tooltip2(_a) {
+  var _b = _a, { content } = _b, props = __objRest(_b, ["content"]);
+  return /* @__PURE__ */ jsx6(ITooltip.Provider, { children: /* @__PURE__ */ jsxs5(ITooltip.Root, { children: [
+    /* @__PURE__ */ jsx6(Trigger2, { children: /* @__PURE__ */ jsx6("p", { children: "Coloque o mouse aqui" }) }),
+    /* @__PURE__ */ jsx6(ITooltip.Portal, { children: /* @__PURE__ */ jsxs5(Content2, __spreadProps(__spreadValues({ sideOffset: 5 }, props), { children: [
+      content,
+      /* @__PURE__ */ jsx6(Arrow2, {})
+    ] })) })
+  ] }) });
+}
 export {
   Avatar2 as Avatar,
   Box,
@@ -610,6 +705,7 @@ export {
   TextArea,
   TextInput,
   Toast2 as Toast,
+  Tooltip2 as Tooltip,
   config,
   createTheme,
   css,

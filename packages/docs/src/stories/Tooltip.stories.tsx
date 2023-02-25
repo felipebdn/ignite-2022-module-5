@@ -1,17 +1,26 @@
 import type { StoryObj, Meta } from '@storybook/react'
-import { ToastProps, Toast, Box } from '@felipebdn-ignite-ui/react'
+import { TooltipProps, Tooltip, Box } from '@felipebdn-ignite-ui/react'
 
 export default {
-  title: 'Overlay/Toast',
-  component: Toast,
-
+  title: 'Overlay/Tooltip',
+  component: Tooltip,
   argTypes: {
-    open: {
+    content: {
       control: {
-        type: 'boolean',
+        type: 'text',
+      },
+    },
+    side: {
+      options: ['right', 'left', 'top', 'bottom'],
+      control: {
+        type: 'inline-radio',
       },
     },
   },
+  args: {
+    content: '21 de Outubro - Indisponível',
+  },
+
   decorators: [
     (Story) => {
       return (
@@ -23,6 +32,7 @@ export default {
               flexDirection: 'column',
               gap: '$2',
               alignItems: 'center',
+              padding: '5rem',
             }}
           >
             {Story()}
@@ -31,11 +41,6 @@ export default {
       )
     },
   ],
-} as Meta<ToastProps>
+} as Meta<TooltipProps>
 
-export const Primary: StoryObj<ToastProps> = {
-  args: {
-    title: 'Agendamento realizado',
-    date: 'Quarta-feira, 23 de Outubro às 16h',
-  },
-}
+export const Primary: StoryObj<TooltipProps> = {}

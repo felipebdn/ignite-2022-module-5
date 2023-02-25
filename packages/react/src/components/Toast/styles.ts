@@ -10,6 +10,7 @@ export const Root = styled(Toast.Root, {
   background: '$gray800',
   border: '1px solid $gray600',
   gap: '2rem',
+  borderRadius: 'sm',
 
   div: {
     width: '100%',
