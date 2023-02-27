@@ -1,5 +1,4 @@
 # Components
-GESD
 
 - [ ] Button
 - [ ] Heading
